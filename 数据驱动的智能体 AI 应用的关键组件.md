@@ -6,7 +6,18 @@ Agentic AI能够提升生产效率，解决传统软件不能解决的问题，�
 
 **Agentic AI 系统的原子性**
 
-Agentic AI应用的核心其实是一个循环（loop).用户让系统完成一项任务时，工作流就进入了一个event的loop，这个loop中会不停迭代循环，直至自己认为完成了这项任务或回答了用户的问题。系统然后会回馈给用户来寻求更多的信息。这个loop，实际上就是Reason+Act（ReAct）loop，是Agentic AI系统的最流行的设计模式。
+Agentic AI应用的核心其实是一个循环（loop).当用户让系统完成一项任务时，工作流就进入了一个event的loop，这个loop中会不停迭代循环，直至认为完成了这项任务或回答了用户的问题。系统可能会回馈给用户来寻求更多的信息。这个loop，实际上就是Reason+Act（ReAct）loop，是Agentic AI系统的最流行的设计模式。
 
-![Uploading DBBLOG-5187-2.png…]()
+![Agentic AI设计Loop](https://d2908q01vomqb2.cloudfront.net/887309d048beef83ad3eabf2a79a64a389ab1c9f/2025/10/02/DBBLOG-5187-2.png)
+
+
+ReAct模式被广泛应用在各式Agent中，比如Chatbot，商业流程自动化Agent、研究类Agent等。实现过程中，可以利用**Agent开发框架**如StrandsAgent、LangGraph，**托管服务**如Amazon Bedrock AgentCore，以及**用户Agent应用**如Amazon Q Business、Q Developer、Claude Desktop等。实现这类Agent，通常需要考虑如下模块：
+
+1.上下文管理模块。负责为每一轮循环检索、汇聚和过滤所需数据。数据来源包括会话状态、历史记忆（如会话历史、用户偏好等）以及工具执行结果。检索数据后，该模块会选择最相关的信息放入下一轮LLM调用的上下文窗口中。
+
+2.推理和规划模块。负责理解用户意图，结合相关上下文来制定或调整行动计划。该模块会判断当前信息是否足够回答用户问题，如果不够就继续执行循环，将每次的结果保存到记忆中，直到完成用户任务。
+
+3.工具/Action执行模块。使用可用工具来执行完成用户任务的具体行动。该模块接收推理和规划模块提供的参数作为工具调用的输入，然后将执行结果传递给上下文管理模块，用于下一轮循环。
+
+这个架构使得Agentic AI应用能够在设计范围内，通过多轮Event Loop来完成指定的任务。在执行任务过程中，Event Loop循环次数越多，系统效率越低。由于LLM调用次数不可预测，会带来不确定的输入/输出token消耗，进而影响成本和性能。从Event Loop中跳出来向用户获取更多数据同样也会影响成本和性能。接下来我们来看有哪些机制可以优化这个loop和用户体验。
 
