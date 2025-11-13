@@ -1,0 +1,8 @@
+整理AWS系列博客： Agent互操作性开放协议
+1. [第一部分：MCP上的智能体间通信](https://aws.amazon.com/blogs/opensource/open-protocols-for-agent-interoperability-part-1-inter-agent-communication-on-mcp/)
+2. [第二部分：MCP上的身份验证](https://aws.amazon.com/blogs/opensource/open-protocols-for-agent-interoperability-part-2-authentication-on-mcp/)
+3. [第三部分：Strands Agents MCP](https://aws.amazon.com/blogs/opensource/open-protocols-for-agent-interoperability-part-3-strands-agents-mcp/)
+4. [第四部分：A2A上的智能体间通信](https://aws.amazon.com/blogs/opensource/open-protocols-for-agent-interoperability-part-4-inter-agent-communication-on-a2a/)
+
+
+** MCP **
