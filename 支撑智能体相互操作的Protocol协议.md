@@ -4,6 +4,8 @@
 3. [第三部分：Strands Agents MCP](https://aws.amazon.com/blogs/opensource/open-protocols-for-agent-interoperability-part-3-strands-agents-mcp/)
 4. [第四部分：A2A上的智能体间通信](https://aws.amazon.com/blogs/opensource/open-protocols-for-agent-interoperability-part-4-inter-agent-communication-on-a2a/)
 
+![Agent互操作性的开放协议](https://github.com/ictmalili/Li2-Data-Nexus/blob/main/Agent%E4%BA%92%E6%93%8D%E4%BD%9C%E6%80%A7%E7%9A%84%E5%BC%80%E6%94%BE%E5%8D%8F%E8%AE%AE.png?raw=true)
+
 随着AI智能体数量的快速增长，智能体之间的沟通和交互变得越来越重要。AWS通过支持两个主要的开放协议——模型上下文协议(MCP)和智能体到智能体协议(A2A)，为构建可互操作的智能体生态系统提供了完整的解决方案。
 
 ## MCP机制：工具集成的标准化协议
